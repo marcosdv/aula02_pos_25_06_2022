@@ -1,5 +1,6 @@
 import 'package:aula02_pos_25_06_2022/datasources/datasources.dart';
 import 'package:aula02_pos_25_06_2022/models/models.dart';
+import 'package:aula02_pos_25_06_2022/ui/ui.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,8 +21,8 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
       ),
       floatingActionButton: FloatingActionButton(
+        onPressed: _abrirCadastroEditora,
         child: const Icon(Icons.add),
-        onPressed: () {},
       ),
       body: FutureBuilder(
         future: _editoraHelper.getTodos(),
@@ -55,5 +56,10 @@ class _HomePageState extends State<HomePage> {
         );
       }
     );
+  }
+
+  void _abrirCadastroEditora() {
+    Navigator.push(context, MaterialPageRoute(
+        builder: (context) => CadEditoraPage()));
   }
 }
