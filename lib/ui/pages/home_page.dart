@@ -48,18 +48,33 @@ class _HomePageState extends State<HomePage> {
       scrollDirection: Axis.vertical,
       itemCount: lista.length,
       itemBuilder: (context, index) {
-        return Card(
-          child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Text(lista[index].nome, style: const TextStyle(fontSize: 22),),
+        return GestureDetector(
+          onTap: () {
+            _abrirListaLivros(lista[index]);
+          },
+          onLongPress: () {
+            _abrirCadastroEditora(editora: lista[index]);
+          },
+          child: Card(
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: Text(lista[index].nome, style: const TextStyle(fontSize: 22),),
+            ),
           ),
         );
       }
     );
   }
 
-  void _abrirCadastroEditora() {
+  void _abrirListaLivros(Editora editora) {
     Navigator.push(context, MaterialPageRoute(
-        builder: (context) => CadEditoraPage()));
+        builder: (context) => LivrosPage(editora: editora)));
+  }
+
+  void _abrirCadastroEditora({Editora? editora}) async {
+    await Navigator.push(context, MaterialPageRoute(
+        builder: (context) => CadEditoraPage(editora: editora,)));
+
+    setState(() { });
   }
 }

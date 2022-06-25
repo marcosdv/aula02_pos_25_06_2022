@@ -7,11 +7,11 @@
 
 ### Conteúdo
 
-- [ ] Criando as Models
-- [ ] Criando o Banco de Dados
-- [ ] Criando os Helpers
-- [ ] Listagem de Editoras
-- [ ] Cadastro de Editoras
+- [x] Criando as Models
+- [x] Criando o Banco de Dados
+- [x] Criando os Helpers
+- [x] Listagem de Editoras
+- [x] Cadastro de Editoras
 - [ ] Criando componentes
 - [ ] Criando mensagens
 
