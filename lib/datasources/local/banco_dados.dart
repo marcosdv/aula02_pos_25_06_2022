@@ -1,3 +1,4 @@
+import 'package:aula02_pos_25_06_2022/datasources/local/editora_helper.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -24,8 +25,7 @@ class BancoDados {
 
     return await openDatabase(caminhoBanco, version: 1,
       onCreate: (Database db, int newVersion) async {
-        await db.execute('CREATE TABLE TbEditora');
-        await db.execute('CREATE TABLE TbLivro');
+        await db.execute(EditoraHelper.SQL_CREATE);
       }
     );
   }
