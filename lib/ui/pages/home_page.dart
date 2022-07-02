@@ -48,21 +48,54 @@ class _HomePageState extends State<HomePage> {
       scrollDirection: Axis.vertical,
       itemCount: lista.length,
       itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-            _abrirListaLivros(lista[index]);
+        return Dismissible(
+          key: UniqueKey(),
+          direction: DismissDirection.horizontal,
+          onDismissed: (DismissDirection direction) {
+            if (direction == DismissDirection.startToEnd) {
+              _abrirCadastroEditora(editora: lista[index]);
+            }
+            else if (direction == DismissDirection.endToStart) {
+              _editoraHelper.excluir(lista[index]);
+            }
           },
-          onLongPress: () {
-            _abrirCadastroEditora(editora: lista[index]);
-          },
-          child: Card(
-            child: Padding(
-              padding: const EdgeInsets.all(8),
-              child: Text(lista[index].nome, style: const TextStyle(fontSize: 22),),
-            ),
+          background: const BackgroundDismissible(
+            corFundo: Colors.blue,
+            corTexto: Colors.white,
+            texto: 'Editar Editora',
+            icone: Icons.edit_note
           ),
+          secondaryBackground: const BackgroundDismissible(
+            corFundo: Colors.red,
+            corTexto: Colors.white,
+            texto: 'Excluir Editora',
+            icone: Icons.delete_forever_outlined,
+            alinharDireita: true,
+          ),
+          child: _criarItemLista(lista[index]),
         );
       }
+    );
+  }
+
+  Widget _criarItemLista(Editora editora) {
+    return GestureDetector(
+      onTap: () {
+        _abrirListaLivros(editora);
+      },
+      onLongPress: () {
+        _abrirCadastroEditora(editora: editora);
+      },
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Row(
+            children: [
+              Text(editora.nome, style: const TextStyle(fontSize: 22),),
+            ],
+          ),
+        ),
+      ),
     );
   }
 
