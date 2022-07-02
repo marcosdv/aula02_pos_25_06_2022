@@ -18,10 +18,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Meus Livros'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: const Text('Meus Livros')),
       floatingActionButton: FloatingActionButton(
         onPressed: _abrirCadastroEditora,
         child: const Icon(Icons.add),

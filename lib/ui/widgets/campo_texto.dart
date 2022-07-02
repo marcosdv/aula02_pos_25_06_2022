@@ -4,11 +4,13 @@ class CampoTexto extends StatelessWidget {
   final TextEditingController controller;
   final String texto;
   final TextInputType? teclado;
+  final bool? isSenha;
 
   const CampoTexto({
     required this.controller,
     required this.texto,
     this.teclado,
+    this.isSenha,
     Key? key}) : super(key: key);
 
   @override
@@ -18,6 +20,7 @@ class CampoTexto extends StatelessWidget {
       child: TextField(
         controller: controller,
         keyboardType: teclado ?? TextInputType.text,
+        obscureText: isSenha ?? false,
         decoration: InputDecoration(
           labelText: texto,
           border: const OutlineInputBorder()

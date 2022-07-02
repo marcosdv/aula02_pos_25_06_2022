@@ -30,7 +30,6 @@ class _CadEditoraPageState extends State<CadEditoraPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cadastro de Editora'),
-        centerTitle: true,
         actions: [
           widget.editora != null
               ? IconButton(onPressed: _excluir, icon: const Icon(Icons.delete_forever, color: Colors.orange,))

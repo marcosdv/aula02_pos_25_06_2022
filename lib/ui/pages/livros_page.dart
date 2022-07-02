@@ -14,10 +14,7 @@ class _LivrosPageState extends State<LivrosPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Livros da ${widget.editora.nome}'),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: Text('Livros da ${widget.editora.nome}')),
     );
   }
 }
