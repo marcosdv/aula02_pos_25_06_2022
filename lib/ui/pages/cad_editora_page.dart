@@ -99,10 +99,21 @@ class _CadEditoraPageState extends State<CadEditoraPage> {
   }
 
   void _excluir() {
+    MensagemAlerta().show(context: context,
+      titulo: 'Atenção',
+      texto: 'Deseja realmente excluir essa editora?',
+      botoes: [
+        Botao(texto: 'Sim', tipo: BotaoEnum.texto, clique: _confirmaExcluir),
+        Botao(texto: 'Não', clique: () { Navigator.pop(context); }),
+      ]
+    );
+  }
+
+  void _confirmaExcluir() {
     if (widget.editora != null) {
       _editoraHelper.excluir(widget.editora!);
     }
-
-    Navigator.pop(context);
+    Navigator.pop(context); //fechar a mensagem
+    Navigator.pop(context); //fechar a tela
   }
 }
