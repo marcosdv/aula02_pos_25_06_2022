@@ -1,4 +1,5 @@
 import 'package:aula02_pos_25_06_2022/datasources/datasources.dart';
+import 'package:aula02_pos_25_06_2022/enums/botao_enum.dart';
 import 'package:aula02_pos_25_06_2022/models/models.dart';
 import 'package:aula02_pos_25_06_2022/ui/ui.dart';
 import 'package:flutter/material.dart';
@@ -73,6 +74,14 @@ class _CadEditoraPageState extends State<CadEditoraPage> {
 
   void _salvar() {
     if (_nomeController.text.isEmpty) {
+      MensagemAlerta().show(
+        context: context,
+        titulo: 'Atenção',
+        texto: 'Digite o nome da editora!',
+        botoes: [
+          Botao(texto: 'Ok', tipo: BotaoEnum.texto, clique: () { Navigator.pop(context); }),
+        ]
+      );
       return;
     }
 
