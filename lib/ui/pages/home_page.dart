@@ -3,6 +3,8 @@ import 'package:aula02_pos_25_06_2022/models/models.dart';
 import 'package:aula02_pos_25_06_2022/ui/ui.dart';
 import 'package:flutter/material.dart';
 
+import '../../enums/botao_enum.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -58,6 +60,23 @@ class _HomePageState extends State<HomePage> {
             else if (direction == DismissDirection.endToStart) {
               _editoraHelper.excluir(lista[index]);
             }
+          },
+          confirmDismiss: (DismissDirection direction) async {
+            if (direction == DismissDirection.endToStart) {
+              return await MensagemAlerta().show(context: context,
+                  titulo: 'Atenção',
+                  texto: 'Deseja realmente excluir essa editora?',
+                  botoes: [
+                    Botao(texto: 'Sim', tipo: BotaoEnum.texto, clique: () {
+                      Navigator.of(context).pop(true);
+                    }),
+                    Botao(texto: 'Não', clique: () {
+                      Navigator.of(context).pop(false);
+                    }),
+                  ]
+              );
+            }
+            return true;
           },
           background: const BackgroundDismissible(
             corFundo: Colors.blue,
